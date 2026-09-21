@@ -153,11 +153,6 @@ em { color: var(--gold); font-family: Georgia, serif; font-weight: 400; letter-s
 .dialog-value { margin: 0 0 22px; color: var(--gold); font: 1rem var(--game-mono); }
 .dialog-content h2 { min-height: 105px; margin: 0 auto 35px; font-size: clamp(1.5rem, 4vw, 2.6rem); line-height: 1.12; letter-spacing: -.05em; }
 .answer-button, .score-button { padding: 13px 19px; color: var(--navy-deep); background: var(--gold); border: 0; font-weight: 700; }
-.answer-form { display: flex; flex-direction: column; align-items: stretch; gap: 9px; max-width: 390px; margin: 0 auto; text-align: left; }
-.answer-form label { color: #bbc8f1; font: .58rem var(--game-mono); letter-spacing: .08em; }
-.answer-form input { padding: 13px 14px; color: var(--cream); background: var(--navy-deep); border: 1px solid var(--game-line); outline: 0; }
-.answer-form input:focus { border-color: var(--gold); }
-.answer-form .answer-button { align-self: center; margin-top: 8px; }
 .answer-button span { margin-left: 35px; font-size: 1.2rem; }
 .answer { margin: -3px auto 28px; color: var(--pink); font: 600 1.2rem Georgia, serif; }
 .scoring-actions { display: flex; justify-content: center; gap: 10px; }
@@ -169,7 +164,7 @@ em { color: var(--gold); font-family: Georgia, serif; font-weight: 400; letter-s
 [hidden] { display: none !important; }
 .player-count-label { color: #bbc8f1; font: .6rem var(--game-mono); letter-spacing: .06em; }
 .player-count { padding: 7px 22px 7px 9px; color: var(--cream); background: var(--blue); border: 1px solid var(--gold); font: .75rem var(--game-mono); }
-.player-card { cursor: pointer; position: relative; }
+.player-card { cursor: pointer; }
 .player-card:not(.active-player) { opacity: .78; }
 .player-card.active-player { opacity: 1; box-shadow: inset 0 -3px 0 var(--gold); }
 .marker-green { background: #6fc49b; }
@@ -181,36 +176,20 @@ em { color: var(--gold); font-family: Georgia, serif; font-weight: 400; letter-s
 .player-list .player-marker { width: 32px; height: 32px; font-size: .75rem; }
 .player-list .player-card strong { font-size: 1rem; }
 @media (max-width: 900px) and (min-width: 721px) { .player-list { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-@media (max-width: 720px) { .player-list { grid-column: 1 / -1; grid-template-columns: repeat(2, minmax(0, 1fr)); max-height: 260px; } .player-list .player-card { min-height: 78px; padding: 9px; } .player-list .player-card .player-label { font-size: .5rem; } }
+@media (max-width: 720px) { .player-list { grid-column: 1 / -1; grid-template-columns: repeat(2, minmax(0, 1fr)); max-height: 260px; } .player-list .player-card { min-height: 78px; padding: 9px; } .player-list .player-card label { font-size: .5rem; } }
 
-.player-card input[type="radio"] { position: absolute; opacity: 0; pointer-events: none; }
-.player-card:has(input[type="radio"]:checked) { border-color: var(--gold); box-shadow: inset 0 -3px 0 var(--gold); }
-.player-card:has(input[type="radio"]:checked) strong { color: var(--gold); }
-.player-card .player-text { display: grid; gap: 6px; }
-.player-card .player-label { color: #bbc8f1; font: .59rem var(--game-mono); letter-spacing: .06em; }
-.player-card input[type="text"] { width: 100%; padding: 2px 0; color: var(--cream); background: none; border: 0; outline: 0; font-weight: 700; }
-
-.clue-card { position: relative; display: block; }
-.clue-card summary { list-style: none; }
-.clue-card summary::-webkit-details-marker { display: none; }
-.clue-card .clue-panel { display: none; }
-.clue-card[open] .clue-panel { display: block; }
-.clue-card[open] .clue-cell { background: #1b4cc2; }
-.clue-panel { position: absolute; inset: 0; z-index: 5; display: grid; gap: 12px; align-content: center; padding: 16px; text-align: left; color: var(--cream); background: rgba(7, 27, 90, 0.96); border: 1px solid var(--gold); box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
-.clue-category { margin: 0; color: var(--gold); font: .58rem var(--game-mono); letter-spacing: .08em; text-transform: uppercase; }
-.custom-clue-field { display: grid; gap: 5px; }
-.custom-clue-field span { color: #bbc8f1; font: .54rem var(--game-mono); letter-spacing: .08em; text-transform: uppercase; }
-.custom-clue-field textarea,
-.custom-clue-field input { width: 100%; padding: 9px 10px; color: var(--cream); background: rgba(255,255,255,.04); border: 1px solid var(--game-line); font: inherit; resize: vertical; }
-.custom-clue-field textarea:focus,
-.custom-clue-field input:focus { outline: 1px solid var(--gold); border-color: var(--gold); }
-.answer { margin: 0; color: #dfe8ff; font-size: .88rem; }
-.answer strong { color: var(--gold); }
-.scoring-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; }
-.score-choice { display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px; border: 1px solid var(--game-line); background: rgba(255,255,255,.04); color: var(--cream); font: .7rem var(--game-mono); letter-spacing: .04em; cursor: pointer; }
-.score-choice input { accent-color: var(--gold); }
-.score-choice.correct { border-color: rgba(248, 200, 76, 0.9); }
-.score-choice.wrong { border-color: rgba(238, 111, 151, 0.9); }
-.score-choice input:checked + span { color: var(--gold); }
-
-@media (max-width: 720px) { .clue-panel { padding: 12px; gap: 8px; } .scoring-row { flex-direction: column; } .score-choice { justify-content: center; } }
+.custom-builder { margin-top: 26px; padding: 22px; border: 1px solid var(--game-line); background: rgba(18, 58, 160, 0.32); }
+.builder-header h2 { margin: 0 0 18px; font-size: clamp(1.8rem, 3vw, 2.8rem); letter-spacing: -.06em; }
+.custom-question-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.field-group { display: flex; flex-direction: column; gap: 8px; }
+.field-group label { color: #bbc8f1; font: .58rem var(--game-mono); letter-spacing: .08em; }
+.field-group input, .field-group select { width: 100%; padding: 12px 14px; color: var(--cream); background: var(--navy-deep); border: 1px solid var(--game-line); }
+.field-wide { grid-column: 1 / -1; }
+.add-question-button { grid-column: 1 / -1; justify-self: start; padding: 12px 18px; color: var(--navy-deep); background: var(--gold); border: 0; font-weight: 700; }
+.answer-form { display: flex; flex-direction: column; align-items: stretch; gap: 9px; max-width: 390px; margin: 0 auto; text-align: left; }
+.answer-form label { color: #bbc8f1; font: .58rem var(--game-mono); letter-spacing: .08em; }
+.answer-form input { padding: 13px 14px; color: var(--cream); background: var(--navy-deep); border: 1px solid var(--game-line); outline: 0; }
+.answer-form input:focus { border-color: var(--gold); }
+.answer-form .answer-button { align-self: center; margin-top: 8px; }
+.answer-button span { margin-left: 35px; font-size: 1.2rem; }
+@media (max-width: 720px) { .custom-question-form { grid-template-columns: 1fr; } .add-question-button { justify-self: stretch; } }
